@@ -1,0 +1,17 @@
+.ContactInfo {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  padding: 0 15px;
+  .Item {
+    color: var(--gray);
+    a {
+      text-decoration: none;
+      color: var(--gray);
+    }
+    .icon {
+      color: var(--green);
+      margin-right: 10px;
+    }
+  }
+}

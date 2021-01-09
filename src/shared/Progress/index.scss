@@ -1,0 +1,24 @@
+.ProgressGroup {
+  + .ProgressGroup {
+    margin-top: 15px;
+  }
+  .Lable {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: var(--gray);
+  }
+  .ProgressBox {
+    width: 100%;
+    background-color: var(--lightgray);
+    border-radius: 10px;
+    .Progress {
+      background-color: var(--green);
+      border-radius: 10px;
+      text-align: center;
+      font-size: 12px;
+      padding: 2px;
+      color: var(--white);
+    }
+  }
+}

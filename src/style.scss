@@ -1,9 +1,123 @@
-body {
-  margin: 0 auto;
-  padding: 50;
+@import '@shared/_mixins';
+
+:root {
+  --red: red;
+  --white: #ffffff;
+  --darkp: #131c20;
+  --darks: #262d31;
+  --bgcolor: #131c20;
+  --green: #009688;
+  --lightgray: #f1f1f1;
+  --gray: #757575;
+  --textcolor: #c1baba;
+  --bordercolor: #44494c;
+  --lightbg: #fff;
+  --yallow: #ffa500;
+  --reversebg: #fff;
 }
 
-div {
-  background-color: teal;
-  padding: 15px;
+html,
+body {
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  background-color: var(--bgcolor);
+}
+* {
+  box-sizing: border-box;
+}
+
+.Btn {
+  cursor: pointer;
+}
+
+.Container {
+  padding: 0 15px;
+  .Row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    .Col {
+      justify-content: space-around;
+      .Nowrap {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+      }
+      &.Col12 {
+        width: 100%;
+      }
+      &.Col6 {
+        width: calc(50% - 7.5px);
+      }
+      &.Col4 {
+        width: 33.3333333333%;
+      }
+      &.Col3 {
+        width: 25%;
+      }
+    }
+  }
+}
+.ColGap {
+  > div {
+    + div {
+      margin-top: 15px;
+    }
+  }
+}
+.Addons {
+  .Button {
+    align-self: flex-end;
+    margin-bottom: 14px;
+    padding: 14px 1.5rem;
+  }
+}
+.Box {
+  @include shadowSM;
+  @include themebg;
+  padding: 2rem;
+  text-align: left;
+  .Button {
+    margin-left: auto;
+  }
+}
+.Title {
+  color: var(--textcolor);
+  margin-top: 0;
+}
+.Button {
+  border: none;
+  background-color: #131c20;
+  padding: 1rem 1.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+.BtnSm {
+  padding: 0.5rem 0.8rem;
+}
+.BtnRed {
+  background-color: var(--red);
+}
+.ButtonGroup {
+  display: flex;
+  gap: 5px;
+}
+
+.TagsGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 1rem;
+  .Tag {
+    padding: 5px 10px;
+    background-color: #009688;
+    color: #fff;
+    .fas {
+      margin-left: 5px;
+    }
+  }
+}
+.flex {
+  display: flex;
 }

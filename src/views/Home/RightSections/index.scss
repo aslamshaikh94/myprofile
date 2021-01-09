@@ -1,0 +1,20 @@
+@import '@shared/_mixins';
+
+.RightSections {
+  flex-grow: 1;
+  > div + div {
+    margin-top: 1rem;
+  }
+  .MainTitle {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: var(--gray);
+    margin-bottom: 1rem;
+    > .fa {
+      font-size: 2rem;
+      margin-right: 1rem;
+      color: var(--green);
+    }
+  }
+}

@@ -1,0 +1,25 @@
+@import '@shared/_mixins';
+
+.Sidebar {
+  @include shadowSM;
+  @include themebg;
+  flex-grow: 1;
+  max-width: 400px;
+  min-height: 100vh;
+  > div + div {
+    border-top: 1px solid var(--bordercolor);
+    padding: 15px;
+  }
+  .MainTitle {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    color: var(--gray);
+    font-size: 1.2rem;
+    .fa {
+      font-size: 1.2rem;
+      margin-right: 10px;
+      color: var(--green);
+    }
+  }
+}

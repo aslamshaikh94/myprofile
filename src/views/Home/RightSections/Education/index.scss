@@ -1,0 +1,7 @@
+@import '@shared/_mixins';
+
+.Education {
+  @include shadowSM;
+  @include themebg;
+  padding: 15px;
+}

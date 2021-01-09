@@ -1,0 +1,9 @@
+@import '@shared/_mixins.scss';
+
+.Wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  gap: 15px;
+  padding-bottom: 1rem;
+}

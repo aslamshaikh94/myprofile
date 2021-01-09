@@ -1,0 +1,22 @@
+@import '@shared/_mixins';
+
+.Auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  .Box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    text-align: center;
+    .ProfileName {
+      color: var(--textcolor);
+      a {
+        color: var(--textcolor);
+      }
+    }
+  }
+}

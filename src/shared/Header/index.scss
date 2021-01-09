@@ -1,0 +1,53 @@
+@import '@shared/_mixins.scss';
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  @include shadowSM;
+  @include themebg;
+  margin-bottom: 1rem;
+  padding: 15px;
+  .AuthIcon {
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .RightGroup {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+}
+.lightDarkBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: var(--white);
+  border-radius: 20px;
+
+  &.light {
+    background-color: var(--darks);
+    .icon {
+      color: var(--white);
+    }
+  }
+  &.dark {
+    .icon {
+      color: var(--yallow);
+    }
+  }
+  input {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  .icon {
+    position: absolute;
+  }
+}

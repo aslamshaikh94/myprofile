@@ -1,0 +1,10 @@
+@import './_colors.scss';
+
+@mixin themebg {
+  background-color: rgba($white, 0.1);
+  border: 1px solid rgba(#424d52, 0.1);
+}
+
+@mixin shadowSM {
+  box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.1);
+}

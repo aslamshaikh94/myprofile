@@ -1,0 +1,7 @@
+@import '@shared/_mixins';
+
+.WorkExperience {
+  @include shadowSM;
+  @include themebg;
+  padding: 15px;
+}
