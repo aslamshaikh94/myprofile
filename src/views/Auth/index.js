@@ -15,9 +15,7 @@ import './index.scss'
 
 const Auth = () => {
   const {
-    state: {
-      loggedInUserData: { id: userId },
-    },
+    state: { loggedInUserData: { id: userId } = {} },
     dispatch,
   } = useStore()
 

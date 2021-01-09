@@ -8,7 +8,7 @@ import './index.scss'
 
 const Header = () => {
   const {
-    state: { loggedInUserData: { id: userId }, themeMode = 'light' } = {},
+    state: { loggedInUserData: { id: userId } = {}, themeMode = 'light' } = {},
     dispatch,
   } = useStore()
 
