@@ -10,6 +10,11 @@ const envVars = Object.keys(env).reduce((obj, key) => {
 }, {})
 
 module.exports = {
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[hash].js',
+    publicPath: '/',
+  },
   module: {
     rules: [
       {
@@ -84,5 +89,6 @@ module.exports = {
     hot: true,
     historyApiFallback: true,
     port: 8080,
+    contentBase: './dist',
   },
 }
