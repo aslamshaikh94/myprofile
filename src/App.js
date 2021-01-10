@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Router, Switch, Route } from 'react-router-dom'
 import Loader from '@shared/Loader'
 import Home from '@views/Home'
@@ -6,32 +6,18 @@ import Dashboard from '@views/Dashboard'
 import Admin from '@views/Admin'
 import Auth from '@views/Auth'
 import { LOGIN_ROUTE, HOME_ROUTE, ADMIN_ROUTE } from '@constants/routers'
-import { setUserFullDetailsAction } from '@actions'
 import history from '@history/'
 import { useStore } from '@store'
 import { setThemeMode } from '@utils'
 import PrivateRoute from '@shared/PrivateRoute'
 import './style.scss'
-
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 const App = () => {
-  const { state: { themeMode } = {}, dispatch } = useStore()
+  const { state: { themeMode } = {} } = useStore()
 
   setThemeMode(themeMode)
-
-  const userDetails = {
-    contactInfo: {},
-    educations: [],
-    employments: [],
-    languages: { languages: [] },
-    skills: { skills: [] },
-  }
-
-  useEffect(() => {
-    dispatch(setUserFullDetailsAction(userDetails))
-  }, [])
 
   return (
     <div>
