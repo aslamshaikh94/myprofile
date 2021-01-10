@@ -17,8 +17,8 @@ export const initialState = {
     contactInfo: {},
     educations: [],
     employments: [],
-    languages: [],
-    skills: [],
+    languages: { languages: [] },
+    skills: { skills: [] },
   },
   themeMode: 'dark',
   snackbarData: {
@@ -30,7 +30,7 @@ export const initialState = {
 
 export default function reducer(state = initialState, action) {
   const { type, payload } = action
-  console.log(action)
+
   let updatedState
   switch (type) {
     case USER_LOGIN_SUCCESS:
