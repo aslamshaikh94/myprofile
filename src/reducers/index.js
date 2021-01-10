@@ -13,7 +13,13 @@ import { setAppStore } from '@store'
 
 export const initialState = {
   loggedInUserData: {},
-  userDetails: {},
+  userDetails: {
+    contactInfo: {},
+    educations: [],
+    employments: [],
+    languages: [],
+    skills: [],
+  },
   themeMode: 'dark',
   snackbarData: {
     visible: false,

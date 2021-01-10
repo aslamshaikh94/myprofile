@@ -10,9 +10,7 @@ import Experiences from '@shared/Experiences'
 
 const Employment = () => {
   const {
-    state: {
-      userDetails: { employments = [] },
-    },
+    state: { userDetails: { employments = [] } = {} },
     dispatch,
   } = useStore()
 

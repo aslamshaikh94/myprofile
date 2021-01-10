@@ -5,9 +5,7 @@ import './index.scss'
 
 const Education = () => {
   const {
-    state: {
-      userDetails: { educations = [] },
-    },
+    state: { userDetails: { educations = [] } = {} },
   } = useStore()
 
   return (

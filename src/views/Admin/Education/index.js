@@ -10,9 +10,7 @@ import Educations from '@shared/Educations'
 
 const Education = () => {
   const {
-    state: {
-      userDetails: { educations = [] },
-    },
+    state: { userDetails: { educations = [] } = {} },
     dispatch,
   } = useStore()
 
