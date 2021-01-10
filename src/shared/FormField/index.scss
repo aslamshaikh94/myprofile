@@ -26,9 +26,10 @@
 }
 
 .SwitchBtn {
-  background-color: var(--reversebg);
+  background-color: var(--bgcolor);
   width: fit-content;
   padding: 2px;
+  border: 2px solid var(--reversebg);
   .btn {
     display: inline-block;
     padding: 10px;
@@ -41,7 +42,7 @@
     display: none;
     & + label {
       cursor: pointer;
-      color: var(--bgcolor);
+      color: var(--reversebg);
       &:hover {
         background: none;
         color: #1a1a1a;
@@ -59,9 +60,9 @@
     }
     &:checked + label {
       cursor: default;
-      color: var(--reversebg);
+      color: var(--bgcolor);
       transition: color 200ms;
-      background-color: var(--bgcolor);
+      background-color: var(--reversebg);
       &:after {
         left: 0;
       }

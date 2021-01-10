@@ -8,7 +8,10 @@ import './index.scss'
 
 const Header = () => {
   const {
-    state: { loggedInUserData: { id: userId } = {}, themeMode = 'light' } = {},
+    state: {
+      loggedInUserData: { id: userId, username } = {},
+      themeMode = 'light',
+    } = {},
     dispatch,
   } = useStore()
 
@@ -46,6 +49,16 @@ const Header = () => {
     <div className="Header">
       <div>Total Users: {totalUser}</div>
       <div className="RightGroup">
+        {history.location.pathname === '/admin' && (
+          <a
+            className="AuthIcon"
+            target="_blank"
+            href={`${window.location.origin}/${username}`}
+          >
+            <i className="fas fa-eye	"></i>
+          </a>
+        )}
+
         {userId ? (
           <span className="AuthIcon" onClick={handleLogOut}>
             <i className="fas fa-sign-out-alt"></i> Sign out

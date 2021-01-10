@@ -20,6 +20,20 @@ export const setThemeAction = (payload) => ({
 })
 
 /**
+ * Set theme mode
+ * @param {String} payload
+ */
+export const setLodingStatusAction = (payload) => {
+  const loader = document.querySelector('.Loader')
+
+  if (payload === true) {
+    loader.classList.add('ShowLoader')
+  } else {
+    loader.classList.remove('ShowLoader')
+  }
+}
+
+/**
  * Sets user info and token in the context store
  * @param {Object} payload The user login data
  */

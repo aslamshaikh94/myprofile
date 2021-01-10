@@ -1,6 +1,6 @@
 import Axios from 'axios'
-import { getAppStore } from '@store'
-
+import { getAppStore, storeDispatcher } from '@store'
+import { setLodingStatusAction } from '@actions'
 // import { encryptRequest, decryptResponse } from './crypto'
 import { LOGIN_ROUTE } from '@constants/routers'
 import history from '@history'
@@ -18,7 +18,7 @@ const outgoingRequestInterceptor = (request) => {
     }
     request.headers['Content-Type'] = 'application/json'
   }
-
+  storeDispatcher.dispatch(setLodingStatusAction(true))
   return request
 }
 
@@ -72,6 +72,7 @@ let AxiosInstance = Axios.create({
 AxiosInstance.defaults.timeout = 30000
 
 const responseSuccessInterceptor = (response) => {
+  storeDispatcher.dispatch(setLodingStatusAction(false))
   return response
 }
 

@@ -49,6 +49,9 @@ body {
       }
       &.Col6 {
         width: calc(50% - 7.5px);
+        @media (max-width: 768px) {
+          width: 100%;
+        }
       }
       &.Col4 {
         width: 33.3333333333%;
@@ -69,8 +72,8 @@ body {
 .Addons {
   .Button {
     align-self: flex-end;
-    margin-bottom: 14px;
-    padding: 14px 1.5rem;
+    margin-bottom: 16px;
+    padding: 11px 1.5rem;
   }
 }
 .Box {

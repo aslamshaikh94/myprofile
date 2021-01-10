@@ -29,3 +29,12 @@ export const dateWithMonthName = (date) => {
     year: 'numeric',
   })
 }
+
+/**
+ * Returns string by removing spaces between string and converting it to lowerCase
+ * @param {String}
+ * @returns {String}
+ */
+export const removeSpacesLowerCase = (string) => {
+  return string.replace(/ /g, '').toLowerCase()
+}

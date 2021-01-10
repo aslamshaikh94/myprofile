@@ -2,6 +2,7 @@
 
 .RightSections {
   flex-grow: 1;
+  width: calc(100% - 415px);
   > div + div {
     margin-top: 1rem;
   }

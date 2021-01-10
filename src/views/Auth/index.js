@@ -11,6 +11,7 @@ import { userLoginSuccessAction, setUserFullDetailsAction } from '@actions'
 import { ADMIN_ROUTE } from '@constants/routers'
 import { formSwitch } from '@constants'
 import history from '@history'
+import { removeSpacesLowerCase } from '@utils'
 import './index.scss'
 
 const Auth = () => {
@@ -28,7 +29,7 @@ const Auth = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    setuserDetails({ ...userDetails, [name]: value.trim() })
+    setuserDetails({ ...userDetails, [name]: removeSpacesLowerCase(value) })
   }
 
   const checkIsUsername = async () => {

@@ -30,7 +30,7 @@ export const initialState = {
 
 export default function reducer(state = initialState, action) {
   const { type, payload } = action
-  console.log(payload)
+
   let updatedState
   switch (type) {
     case USER_LOGIN_SUCCESS:

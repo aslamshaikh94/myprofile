@@ -1,5 +1,6 @@
 import React from 'react'
 import { Router, Switch, Route } from 'react-router-dom'
+import Loader from '@shared/Loader'
 import Home from '@views/Home'
 import Dashboard from '@views/Dashboard'
 import Admin from '@views/Admin'
@@ -17,6 +18,7 @@ const App = () => {
 
   return (
     <div>
+      <Loader />
       <Router history={history}>
         <Switch>
           <PrivateRoute path={ADMIN_ROUTE} component={Admin} />

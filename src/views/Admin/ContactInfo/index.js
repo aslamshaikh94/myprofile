@@ -6,7 +6,10 @@ import { InputField } from '@shared/FormField'
 
 const ContactInfo = () => {
   const {
-    state: { userDetails: { contactInfo: conInfo = {} } = {} } = {},
+    state: {
+      loggedInUserData: { username } = {},
+      userDetails: { contactInfo: conInfo = {} } = {},
+    } = {},
     dispatch,
   } = useStore()
 
@@ -14,6 +17,7 @@ const ContactInfo = () => {
 
   const {
     _id,
+
     name,
     designation,
     address,
