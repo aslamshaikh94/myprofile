@@ -18,7 +18,7 @@ const outgoingRequestInterceptor = (request) => {
     }
     request.headers['Content-Type'] = 'application/json'
   }
-  storeDispatcher.dispatch(setLodingStatusAction(true))
+  setLodingStatusAction(true)
   return request
 }
 
@@ -72,7 +72,7 @@ let AxiosInstance = Axios.create({
 AxiosInstance.defaults.timeout = 30000
 
 const responseSuccessInterceptor = (response) => {
-  storeDispatcher.dispatch(setLodingStatusAction(false))
+  setLodingStatusAction(false)
   return response
 }
 
