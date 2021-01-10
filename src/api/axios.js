@@ -5,6 +5,8 @@ import { setLodingStatusAction } from '@actions'
 import { LOGIN_ROUTE } from '@constants/routers'
 import history from '@history'
 
+import { showNotification } from '@shared/Notification'
+
 /**
  * Authorizes requests by injecting the token from the localStorage.
  * @param {import('axios').AxiosRequestConfig} request The request object
@@ -32,14 +34,13 @@ const responseErrorInterceptor = (err) => {
   const { response: { status, message } = {} } = err
   if (status < 500 && status >= 400) {
     // all 4xx errors
-    console.log('500,400', message)
 
     // throw user to capture lead page if errorFlag is true Otherwise display err msg
     if (err.response && err.response.status === 400) {
       const {
         data: { message },
       } = err.response
-      console.log('400', message)
+      showNotification('error', message)
     }
 
     // throw user to login page. 403 might have to be removed depending on API
@@ -48,18 +49,19 @@ const responseErrorInterceptor = (err) => {
         data: { message = 'You have been logged out' } = {},
       } = err.response
 
-      console.log('401 & 403', message)
+      showNotification('error', message)
 
       history.push(LOGIN_ROUTE)
     }
+    setLodingStatusAction(false)
   }
 
   if (!!errorJSON && errorJSON.code === 'ECONNABORTED') {
-    console.log('Request Timed Out. Please check your connection')
+    showNotification('error', 'Request Timed Out. Please check your connection')
   }
 
   if (!!errorJSON && errorJSON.message === 'Network Error') {
-    console.log('Network Error.')
+    showNotification('error', 'Network Error.')
   }
 
   return Promise.reject(err)

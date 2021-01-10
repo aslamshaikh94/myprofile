@@ -13,6 +13,9 @@ import { setThemeMode } from '@utils'
 import PrivateRoute from '@shared/PrivateRoute'
 import './style.scss'
 
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 const App = () => {
   const { state: { themeMode } = {}, dispatch } = useStore()
 
@@ -43,6 +46,7 @@ const App = () => {
           </Route>
         </Switch>
       </Router>
+      <ToastContainer />
     </div>
   )
 }
