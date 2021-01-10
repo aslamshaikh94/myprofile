@@ -8,7 +8,7 @@ import './index.scss'
 const Skills = () => {
   const {
     state: {
-      userDetails: { skills: { skills: userSkills = [], _id } = {} },
+      userDetails: { skills: { skills: userSkills = [], _id } = {} } = {},
     },
     dispatch,
   } = useStore()
