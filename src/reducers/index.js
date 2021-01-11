@@ -7,12 +7,14 @@ import {
   SET_USER_LANGUAGES,
   SET_USER_EMPLOYMENT,
   SET_USER_EDUCATION,
+  SET_USERS_LIST,
 } from '@constants/actionTypes'
 
 import { setAppStore } from '@store'
 
 export const initialState = {
   loggedInUserData: {},
+  usersList: [],
   userDetails: {
     contactInfo: {},
     educations: [],
@@ -68,6 +70,9 @@ export default function reducer(state = initialState, action) {
         ...state,
         userDetails: { ...state.userDetails, ...payload },
       }
+      break
+    case SET_USERS_LIST:
+      updatedState = { ...state, usersList: payload }
       break
     case SET_THEME_MODE:
       updatedState = { ...state, themeMode: payload }

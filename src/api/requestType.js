@@ -46,7 +46,15 @@ export const callSetContactInfo = (payload) => {
  * @param {string} payload.username
  */
 export const callGetUserFullGetails = (payload) => {
-  return Axios.get(`/userdetails/${payload.username}`)
+  return Axios.get(`/userdetails/profile${payload.username}`)
+}
+
+/**  Get Full detail of user using username
+ * @param {Object} payload
+ * @param {string} payload.username
+ */
+export const callGetUsersList = (payload) => {
+  return Axios.post(`/userdetails/userslist`)
 }
 
 /**  Set user skills
@@ -99,6 +107,13 @@ export const callSetUserEducation = (payload) => {
 export const callDeleteEducationAction = (payload) => {
   const { _id } = payload
   return Axios.delete(`/userdetails/education/${_id}`)
+}
+
+/**  Set user Education
+ * @param {Object} payload
+ */
+export const callSetUserProjectAction = (payload) => {
+  return Axios.post('/userdetails/project', payload)
 }
 
 /**  Check username is exist

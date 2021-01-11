@@ -1,8 +1,51 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useStore } from '@store'
+import { callGetUsersList } from '@api/requestType'
+import { setUsersListAction } from '@actions'
 import Header from '@shared/Header'
+import './index.scss'
 
 const Dashboard = () => {
-  return <Header />
+  const {
+    state: { usersList },
+    dispatch,
+  } = useStore()
+  const getUsersList = async () => {
+    const { status, data } = await callGetUsersList()
+    if (status === 200) {
+      dispatch(setUsersListAction(data))
+    }
+  }
+
+  useEffect(() => {
+    getUsersList()
+  }, [])
+
+  console.log(usersList)
+  return (
+    <div>
+      <Header />
+      <div className="Container">
+        <div className="Row">
+          {usersList &&
+            usersList.map((item, i) => (
+              <div className="Col Col3">
+                <a href={item.username} target="_blank" className="LinkNone">
+                  <div className="Box ProfileView">
+                    <img src={`https://picsum.photos/200/300?random=${i}`} />
+                    <div>
+                      <h3 className="Title">{item.name}</h3>
+                      <p>{item.designation}</p>
+                      <p>{item.address}</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            ))}
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default Dashboard

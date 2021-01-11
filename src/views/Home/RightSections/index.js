@@ -1,6 +1,7 @@
 import React from 'react'
 import WorkExperience from './WorkExperience'
 import Education from './Education'
+import Projects from './Projects'
 import './index.scss'
 
 const RightSections = () => {
@@ -8,6 +9,7 @@ const RightSections = () => {
     <div className="RightSections">
       <WorkExperience />
       <Education />
+      <Projects />
     </div>
   )
 }

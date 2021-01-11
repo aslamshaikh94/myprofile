@@ -1,0 +1,7 @@
+@import '@shared/_mixins';
+
+.Projects {
+  @include shadowSM;
+  @include themebg;
+  padding: 15px;
+}

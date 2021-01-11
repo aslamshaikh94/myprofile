@@ -8,6 +8,7 @@ import {
   SET_USER_LANGUAGES,
   SET_USER_EMPLOYMENT,
   SET_USER_EDUCATION,
+  SET_USERS_LIST,
 } from '@constants/actionTypes'
 
 /**
@@ -93,6 +94,15 @@ export const setUserEducationAction = (payload) => ({
  */
 export const setUserFullDetailsAction = (payload) => ({
   type: SET_USER_FULL_DETAILS,
+  payload,
+})
+
+/**
+ * Sets user info and token in the context store
+ * @param {Object} payload The user login data
+ */
+export const setUsersListAction = (payload) => ({
+  type: SET_USERS_LIST,
   payload,
 })
 

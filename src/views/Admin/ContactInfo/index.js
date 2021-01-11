@@ -6,18 +6,13 @@ import { InputField } from '@shared/FormField'
 
 const ContactInfo = () => {
   const {
-    state: {
-      loggedInUserData: { username } = {},
-      userDetails: { contactInfo: conInfo = {} } = {},
-    } = {},
+    state: { userDetails: { contactInfo: conInfo = {} } = {} } = {},
     dispatch,
   } = useStore()
 
   const [contactInfo, setContactInfo] = useState(conInfo)
 
   const {
-    _id,
-
     name,
     designation,
     address,
@@ -28,14 +23,7 @@ const ContactInfo = () => {
   } = contactInfo
 
   const payload = {
-    _id,
-    name,
-    designation,
-    address,
-    email,
-    mobile,
-    gitlink,
-    linkedin,
+    contactInfo,
   }
 
   const handleSubmit = async () => {

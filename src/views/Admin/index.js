@@ -5,6 +5,7 @@ import Skills from './Skills'
 import Languages from './Languages'
 import Employment from './Employment'
 import Education from './Education'
+import Projects from './Projects'
 import './index.scss'
 
 const Admin = () => {
@@ -22,6 +23,7 @@ const Admin = () => {
             <div className="Col Col6 ColGap">
               <Employment />
               <Education />
+              <Projects />
             </div>
           </div>
         </div>

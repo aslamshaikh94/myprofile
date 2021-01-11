@@ -1,0 +1,21 @@
+.ProfileView {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  &.Box {
+    padding: 1rem;
+  }
+  h3 {
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+  img {
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+    border: 1px solid var(--bordercolor);
+    object-fit: cover;
+  }
+}
