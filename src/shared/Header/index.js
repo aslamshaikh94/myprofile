@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useStore, setStore } from '@store'
 import { callGetUserCout } from '@api/requestType'
-import { setThemeAction, userLoginSuccessAction } from '@actions'
+import {
+  setThemeAction,
+  userLoginSuccessAction,
+  setUserFullDetailsAction,
+} from '@actions'
 import history from '@history'
 import { HOME_ROUTE, LOGIN_ROUTE } from '@constants/routers'
 import './index.scss'
@@ -35,9 +39,17 @@ const Header = () => {
       dispatch(setThemeAction('light'))
     }
   }
+  const userDetails = {
+    contactInfo: {},
+    educations: [],
+    employments: [],
+    languages: { languages: [] },
+    skills: { skills: [] },
+  }
 
   const handleLogOut = () => {
     dispatch(userLoginSuccessAction({}))
+    dispatch(setUserFullDetailsAction(userDetails))
     history.push(HOME_ROUTE)
   }
 
