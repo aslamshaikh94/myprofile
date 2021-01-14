@@ -4,7 +4,7 @@ const ViewProjects = (props) => {
   const { projects = [], onEventClick } = props
 
   return projects.map((item) => (
-    <div key={item._id} className="ViewProjects">
+    <div key={item._id} className="BoxItem">
       <div className="SubTitle">
         <div>{item.projectname}</div>
         {onEventClick && (
@@ -25,10 +25,12 @@ const ViewProjects = (props) => {
         )}
       </div>
       <div className="Calendar">
-        <i className="far fa-calendar-alt"></i> {item.projectLink}
+        <a href={item.projectLink} className="LinkNone" target="_blank">
+          <i className="fas fa-external-link-alt"></i> View Project
+        </a>
       </div>
-      <p className="Paragraph">Marks/Grade: {item.technologies}</p>
-      <p className="Paragraph">Marks/Grade: {item.describe}</p>
+      <p className="Paragraph">Technologies: {item.technologies}</p>
+      <p className="Paragraph">{item.describe}</p>
     </div>
   ))
 }

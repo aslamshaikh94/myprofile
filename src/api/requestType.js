@@ -101,19 +101,27 @@ export const callSetUserEducation = (payload) => {
   return Axios.post('/userdetails/education', payload)
 }
 
-/**  Set user Education
+/**  Delete user Education
  * @param {Object} payload
  */
-export const callDeleteEducationAction = (payload) => {
+export const callDeleteEducation = (payload) => {
   const { _id } = payload
   return Axios.delete(`/userdetails/education/${_id}`)
 }
 
-/**  Set user Education
+/**  Set user Project
  * @param {Object} payload
  */
-export const callSetUserProjectAction = (payload) => {
+export const callSetUserProject = (payload) => {
   return Axios.post('/userdetails/project', payload)
+}
+
+/**  Delete user Project
+ * @param {Object} payload
+ */
+export const callDeleteUserProject = (payload) => {
+  const { _id } = payload
+  return Axios.delete(`/userdetails/project/${_id}`)
 }
 
 /**  Check username is exist

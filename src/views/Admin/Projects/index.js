@@ -1,9 +1,16 @@
 import React, { useState } from 'react'
+import { useStore } from '@store'
 import { InputField, TextArea } from '@shared/FormField'
-
-import { callSetUserProjectAction } from '@api/requestType'
+import ViewProjects from '@shared/ViewProjects'
+import { callSetUserProject, callDeleteUserProject } from '@api/requestType'
+import { setUserProjectAction } from '@actions'
 
 const Projects = () => {
+  const {
+    state: { userDetails: { projects = [] } = {} },
+    dispatch,
+  } = useStore()
+
   const [project, setProject] = useState({})
 
   const { projectname, projectLink, technologies, describe } = project
@@ -17,15 +24,33 @@ const Projects = () => {
     project,
   }
 
-  const handleSubmit = () => {
-    const { status, data } = callSetUserProjectAction(payload)
-    console.log(status, data)
+  const handleAcction = async (id, event) => {
+    if (event === 'delete') {
+      const { status } = await callDeleteUserProject({ _id: id })
+      if (status) {
+        const newProjects = projects.filter((item) => item._id !== id)
+        dispatch(setUserProjectAction({ projects: newProjects }))
+      }
+    } else {
+      setProject(...projects.filter((item) => item._id === id))
+    }
+  }
+
+  const handleSubmit = async () => {
+    const { status, data } = await callSetUserProject(payload)
+
+    if (status === 200) {
+      const newProjects = projects.filter((item) => item._id !== data._id)
+      dispatch(setUserProjectAction({ projects: [...newProjects, data] })),
+        setProject({})
+    }
   }
 
   return (
-    <div className="Projects">
+    <div className="BoxItem">
       <div className="Box">
         <h3 className="Title">Projects</h3>
+        <ViewProjects projects={projects} onEventClick={handleAcction} />
         <div className="Row">
           <div className="Col Col6">
             <InputField

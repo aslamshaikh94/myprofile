@@ -8,6 +8,7 @@ import {
   SET_USER_EMPLOYMENT,
   SET_USER_EDUCATION,
   SET_USERS_LIST,
+  SET_USER_PROJECT,
 } from '@constants/actionTypes'
 
 import { setAppStore } from '@store'
@@ -66,6 +67,12 @@ export default function reducer(state = initialState, action) {
       }
       break
     case SET_USER_EDUCATION:
+      updatedState = {
+        ...state,
+        userDetails: { ...state.userDetails, ...payload },
+      }
+      break
+    case SET_USER_PROJECT:
       updatedState = {
         ...state,
         userDetails: { ...state.userDetails, ...payload },

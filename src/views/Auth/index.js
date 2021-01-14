@@ -20,7 +20,9 @@ const Auth = () => {
     dispatch,
   } = useStore()
 
-  if (userId) history.push(ADMIN_ROUTE)
+  useEffect(() => {
+    if (userId) history.push(ADMIN_ROUTE)
+  }, [])
 
   const [userDetails, setuserDetails] = useState({ authform: 'signin' })
   const [isUsername, setIsUsername] = useState(true)

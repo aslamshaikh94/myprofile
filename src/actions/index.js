@@ -9,6 +9,7 @@ import {
   SET_USER_EMPLOYMENT,
   SET_USER_EDUCATION,
   SET_USERS_LIST,
+  SET_USER_PROJECT,
 } from '@constants/actionTypes'
 
 /**
@@ -85,6 +86,15 @@ export const setUserEmploymentAction = (payload) => ({
  */
 export const setUserEducationAction = (payload) => ({
   type: SET_USER_EDUCATION,
+  payload,
+})
+
+/**
+ * Set user Project
+ * @param {Object} payload The user login data
+ */
+export const setUserProjectAction = (payload) => ({
+  type: SET_USER_PROJECT,
   payload,
 })
 

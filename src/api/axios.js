@@ -58,10 +58,12 @@ const responseErrorInterceptor = (err) => {
 
   if (!!errorJSON && errorJSON.code === 'ECONNABORTED') {
     showNotification('error', 'Request Timed Out. Please check your connection')
+    setLodingStatusAction(false)
   }
 
   if (!!errorJSON && errorJSON.message === 'Network Error') {
     showNotification('error', 'Network Error.')
+    setLodingStatusAction(false)
   }
 
   return Promise.reject(err)

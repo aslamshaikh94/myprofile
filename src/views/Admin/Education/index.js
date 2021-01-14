@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
 import { useStore } from '@store'
-import {
-  callSetUserEducation,
-  callDeleteEducationAction,
-} from '@api/requestType'
+import { callSetUserEducation, callDeleteEducation } from '@api/requestType'
 import { setUserEducationAction } from '@actions'
 import { InputField } from '@shared/FormField'
 import Educations from '@shared/Educations'
@@ -33,7 +30,7 @@ const Education = () => {
       const {
         status,
         data: { _id },
-      } = await callDeleteEducationAction({ _id: id })
+      } = await callDeleteEducation({ _id: id })
       if (status) {
         const newEducations = educations.filter((item) => item._id !== id)
         dispatch(setUserEducationAction({ educations: newEducations }))

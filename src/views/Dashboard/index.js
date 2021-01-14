@@ -29,7 +29,7 @@ const Dashboard = () => {
         <div className="Row">
           {usersList &&
             usersList.map((item, i) => (
-              <div className="Col Col3">
+              <div className="Col Col3" key={item.username}>
                 <a href={item.username} target="_blank" className="LinkNone">
                   <div className="Box ProfileView">
                     <img src={`https://picsum.photos/200/300?random=${i}`} />

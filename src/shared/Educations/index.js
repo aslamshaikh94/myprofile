@@ -1,12 +1,11 @@
 import React from 'react'
 import { dateWithMonthName } from '@utils'
-import './index.scss'
 
 const Educations = (props) => {
   const { educations = [], onEventClick } = props
 
   return educations.map((item) => (
-    <div key={item._id} className="Educations">
+    <div key={item._id} className="BoxItem">
       <div className="SubTitle">
         <div>
           {item.education} / {item.institute}{' '}

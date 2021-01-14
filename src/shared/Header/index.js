@@ -59,7 +59,7 @@ const Header = () => {
 
   return (
     <div className="Header">
-      <div>Total Users: {totalUser}</div>
+      <div className="Green">Total Users: {totalUser}</div>
       <div className="RightGroup">
         {history.location.pathname === '/admin' && (
           <a

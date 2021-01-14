@@ -8,8 +8,8 @@ const RightSections = () => {
   return (
     <div className="RightSections">
       <WorkExperience />
-      <Education />
       <Projects />
+      <Education />
     </div>
   )
 }
