@@ -124,6 +124,13 @@ export const callDeleteUserProject = (payload) => {
   return Axios.delete(`/userdetails/project/${_id}`)
 }
 
+/**  Delete user Project
+ * @param {Object} payload
+ */
+export const callUploadUserProfilePhoto = (payload) => {
+  return Axios.post('/userdetails/profilephoto', payload)
+}
+
 /**  Check username is exist
  * @param {Object} payload
  * @param {string} payload.username

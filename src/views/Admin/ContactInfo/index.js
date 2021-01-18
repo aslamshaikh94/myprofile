@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useStore } from '@store'
 import { callSetContactInfo } from '@api/requestType'
 import { setUserContactInfoAction } from '@actions'
@@ -12,6 +12,10 @@ const ContactInfo = () => {
   } = useStore()
 
   const [contactInfo, setContactInfo] = useState(conInfo)
+
+  useEffect(() => {
+    setContactInfo({ ...contactInfo, userPhoto: conInfo.userPhoto })
+  }, [conInfo.userPhoto])
 
   const {
     name,
@@ -39,17 +43,13 @@ const ContactInfo = () => {
     setContactInfo({ ...contactInfo, [name]: value })
   }
 
-  const handleUpload = () => {
-    console.log('ldfjkd')
-  }
-
   return (
     <div className="ContactInfoForm">
       <div className="Box">
         <h3 className="Title">Contact Information</h3>
         <div className="Row">
           <div className="Col Col12">
-            <ProfilePhoto onUpload={handleUpload} />
+            <ProfilePhoto onUpload />
           </div>
         </div>
         <div className="Row">
