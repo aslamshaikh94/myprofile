@@ -21,7 +21,6 @@ const Dashboard = () => {
     getUsersList()
   }, [])
 
-  console.log(usersList)
   return (
     <div>
       <Header />
