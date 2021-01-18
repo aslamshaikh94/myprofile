@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Router, Switch, Route } from 'react-router-dom'
 import Loader from '@shared/Loader'
 import Home from '@views/Home'
@@ -12,28 +12,21 @@ import { setThemeMode } from '@utils'
 import PrivateRoute from '@shared/PrivateRoute'
 import './style.scss'
 import { ToastContainer } from 'react-toastify'
-import { Helmet } from 'react-helmet'
 import 'react-toastify/dist/ReactToastify.css'
 
 const App = () => {
-  const { state: { themeMode, userDetails } = {} } = useStore()
+  const { state: { themeMode, userDetails = {} } = {} } = useStore()
 
   setThemeMode(themeMode)
 
-  const {
-    contactInfo: { name = 'StackOverPro' },
-  } = userDetails
+  const { contactInfo: { name = 'StackOverPro' } = {} } = userDetails
 
-  const metaTags = [
-    {
-      name: 'description',
-      content: 'details',
-    },
-  ]
+  useEffect(() => {
+    document.title = name
+  }, [name])
 
   return (
     <div>
-      <Helmet title={name} meta={metaTags} />
       <Loader />
       <Router history={history}>
         <Switch>
