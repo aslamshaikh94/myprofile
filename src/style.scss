@@ -48,6 +48,9 @@ body {
       &.Col12 {
         width: 100%;
       }
+      .Col8 {
+        width: 75%;
+      }
       &.Col6 {
         width: calc(50% - 7.5px);
         @media (max-width: 768px) {
@@ -56,9 +59,15 @@ body {
       }
       &.Col4 {
         width: 33.3333333333%;
+        @media (max-width: 768px) {
+          width: 100%;
+        }
       }
       &.Col3 {
         width: 25%;
+        @media (max-width: 768px) {
+          width: 100%;
+        }
       }
     }
   }

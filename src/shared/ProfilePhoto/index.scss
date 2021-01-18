@@ -1,5 +1,10 @@
 .ProfilePhoto {
   position: relative;
+  &.Upload {
+    border: 1px solid var(--textcolor);
+    max-width: 400px;
+    margin-bottom: 2rem;
+  }
   img {
     display: block;
     width: 100%;

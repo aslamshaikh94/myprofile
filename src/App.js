@@ -12,15 +12,28 @@ import { setThemeMode } from '@utils'
 import PrivateRoute from '@shared/PrivateRoute'
 import './style.scss'
 import { ToastContainer } from 'react-toastify'
+import { Helmet } from 'react-helmet'
 import 'react-toastify/dist/ReactToastify.css'
 
 const App = () => {
-  const { state: { themeMode } = {} } = useStore()
+  const { state: { themeMode, userDetails } = {} } = useStore()
 
   setThemeMode(themeMode)
 
+  const {
+    contactInfo: { name = 'StackOverPro' },
+  } = userDetails
+
+  const metaTags = [
+    {
+      name: 'description',
+      content: 'details',
+    },
+  ]
+
   return (
     <div>
+      <Helmet title={name} meta={metaTags} />
       <Loader />
       <Router history={history}>
         <Switch>

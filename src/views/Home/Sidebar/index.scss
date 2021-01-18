@@ -4,6 +4,7 @@
   @include shadowSM;
   @include themebg;
   flex-grow: 1;
+  width: 100%;
   max-width: 400px;
   min-height: 100vh;
   > div + div {

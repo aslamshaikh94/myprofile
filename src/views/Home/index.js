@@ -10,7 +10,17 @@ import { callGetUserFullGetails } from '@api/requestType'
 
 const Home = () => {
   const { dispatch } = useStore()
+
+  const userDetails = {
+    contactInfo: {},
+    educations: [],
+    employments: [],
+    languages: { languages: [] },
+    skills: { skills: [] },
+  }
+
   const getUserInfo = async () => {
+    dispatch(setUserFullDetailsAction(userDetails))
     const { pathname: username } = history.location
     if (username) {
       const { status, data } = await callGetUserFullGetails({ username })
@@ -19,6 +29,7 @@ const Home = () => {
       }
     }
   }
+
   useEffect(() => {
     getUserInfo()
   }, [])

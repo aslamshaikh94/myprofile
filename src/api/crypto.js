@@ -2,7 +2,7 @@ import crypto from 'crypto'
 
 const enableEncryption = process.env.ENABLE_ENCRYPTION
 const clientKey = process.env.CLIENT_KEY
-const cleanKey = process.env.SERVER_PUBLIC_KEY.replace(/\\n/g, '\n')
+const cleanKey = process.env.PUBLIC_KEY.replace(/\\n/g, '\n')
 
 const generateRandomHexString = (size) => {
   return crypto.randomBytes(size / 2).toString('hex')
@@ -24,6 +24,7 @@ const getCipherTextAndIV = (data) => {
   return { cipherText, encryptedClientKey, iv, clientKey }
 }
 
+//Decrypt your payload
 const decryptPayload = (data) => {
   if (data) {
     const [payload, iv] = data.split('|')
@@ -43,7 +44,6 @@ const decryptPayload = (data) => {
  * added to preserve that data.
  * @param {Object} req The request object
  */
-
 export const encryptRequest = (req) => {
   if (req && enableEncryption === 'Y') {
     let fd
@@ -63,21 +63,9 @@ export const encryptRequest = (req) => {
 }
 
 export const decryptResponse = (res) => {
-  const {
-    config: { url },
-  } = res
   if (enableEncryption === 'Y') {
-    if (url === '/journey/export') {
-      res.data = { data: decryptPayload(res.data) }
-      return res
-    } else {
-      res.data.data = decryptPayload(res.data.data)
-      return res
-    }
+    return decryptPayload(res.data)
   } else {
-    if (url === '/journey/export') {
-      res.data = { data: res.request.response }
-      return res
-    } else return res
+    return res
   }
 }

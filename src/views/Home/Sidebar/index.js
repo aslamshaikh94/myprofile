@@ -1,5 +1,5 @@
 import React from 'react'
-import ProfilePhoto from './ProfilePhoto'
+import ProfilePhoto from '@shared/ProfilePhoto'
 import ContactInfo from './ContactInfo'
 import Skills from './Skills'
 import Languages from './Languages'

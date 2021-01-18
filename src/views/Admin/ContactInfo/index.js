@@ -3,6 +3,7 @@ import { useStore } from '@store'
 import { callSetContactInfo } from '@api/requestType'
 import { setUserContactInfoAction } from '@actions'
 import { InputField } from '@shared/FormField'
+import ProfilePhoto from '@shared/ProfilePhoto'
 
 const ContactInfo = () => {
   const {
@@ -38,10 +39,19 @@ const ContactInfo = () => {
     setContactInfo({ ...contactInfo, [name]: value })
   }
 
+  const handleUpload = () => {
+    console.log('ldfjkd')
+  }
+
   return (
     <div className="ContactInfoForm">
       <div className="Box">
         <h3 className="Title">Contact Information</h3>
+        <div className="Row">
+          <div className="Col Col12">
+            <ProfilePhoto onUpload={handleUpload} />
+          </div>
+        </div>
         <div className="Row">
           <div className="Col Col6">
             <InputField
