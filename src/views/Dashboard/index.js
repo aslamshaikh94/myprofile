@@ -31,7 +31,12 @@ const Dashboard = () => {
               <div className="Col Col3" key={item.username}>
                 <a href={item.username} target="_blank" className="LinkNone">
                   <div className="Box ProfileView">
-                    <img src={`//joeschmoe.io/api/v1/${item.name}`} />
+                    <img
+                      src={
+                        (item.userPhoto && item.userPhoto.imgUrl) ||
+                        `//joeschmoe.io/api/v1/${item.name}`
+                      }
+                    />
                     <div>
                       <h3 className="Title">{item.name}</h3>
                       <p>{item.designation}</p>
