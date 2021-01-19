@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useStore } from '@store'
 import { callSetContactInfo } from '@api/requestType'
 import { setUserContactInfoAction } from '@actions'
-import { InputField } from '@shared/FormField'
+import { InputField, SwitchButton } from '@shared/FormField'
 import ProfilePhoto from '@shared/ProfilePhoto'
 
 const ContactInfo = () => {
@@ -11,7 +11,10 @@ const ContactInfo = () => {
     dispatch,
   } = useStore()
 
-  const [contactInfo, setContactInfo] = useState(conInfo)
+  const [contactInfo, setContactInfo] = useState({
+    personalInfo: true,
+    ...conInfo,
+  })
 
   useEffect(() => {
     setContactInfo({ ...contactInfo, userPhoto: conInfo.userPhoto })
@@ -25,6 +28,7 @@ const ContactInfo = () => {
     mobile,
     gitlink,
     linkedin,
+    personalInfo,
   } = contactInfo
 
   const payload = {
@@ -48,8 +52,18 @@ const ContactInfo = () => {
       <div className="Box">
         <h3 className="Title">Contact Information</h3>
         <div className="Row">
-          <div className="Col Col12">
+          <div className="Col Col6">
             <ProfilePhoto onUpload />
+          </div>
+          <div className="Col Col6">
+            <SwitchButton
+              lable="Personal Information*"
+              name="personalInfo"
+              optionsName={['Public', 'Private']}
+              optionsValue={[true, false]}
+              checked={personalInfo}
+              onChange={handleChange}
+            />
           </div>
         </div>
         <div className="Row">
@@ -71,7 +85,7 @@ const ContactInfo = () => {
           </div>
           <div className="Col Col6">
             <InputField
-              lable="Address"
+              lable="Address*"
               name="address"
               value={address}
               onChange={handleChange}
@@ -79,7 +93,7 @@ const ContactInfo = () => {
           </div>
           <div className="Col Col6">
             <InputField
-              lable="Email"
+              lable="Email*"
               name="email"
               value={email}
               onChange={handleChange}
@@ -87,8 +101,8 @@ const ContactInfo = () => {
           </div>
           <div className="Col Col6">
             <InputField
+              lable="Mobile*"
               type="number"
-              lable="Mobile"
               name="mobile"
               value={mobile}
               onChange={handleChange}
@@ -96,8 +110,8 @@ const ContactInfo = () => {
           </div>
           <div className="Col Col6">
             <InputField
+              lable="Git link*"
               type="url"
-              lable="Git link"
               name="gitlink"
               value={gitlink}
               onChange={handleChange}
@@ -105,8 +119,8 @@ const ContactInfo = () => {
           </div>
           <div className="Col Col6">
             <InputField
+              lable="Linkedin*"
               type="url"
-              lable="Linkedin"
               name="linkedin"
               value={linkedin}
               onChange={handleChange}

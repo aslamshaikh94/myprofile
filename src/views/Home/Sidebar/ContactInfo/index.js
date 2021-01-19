@@ -32,18 +32,22 @@ const ContactInfo = () => {
       <span className="Item">
         <i className="fa fa-phone icon"></i> {mobile}
       </span>
-      <span className="Item">
-        <i className="fab fa-git-square icon"></i>{' '}
-        <a href={gitlink} target="_blank">
-          Git Repository
-        </a>
-      </span>
-      <span className="Item">
-        <i className="fab fa-linkedin icon"></i>{' '}
-        <a href={linkedin} target="_blank">
-          Linkedin
-        </a>
-      </span>
+      {gitlink && (
+        <span className="Item">
+          <i className="fab fa-git-square icon"></i>{' '}
+          <a href={gitlink} target="_blank">
+            Git Repository
+          </a>
+        </span>
+      )}
+      {linkedin && (
+        <span className="Item">
+          <i className="fab fa-linkedin icon"></i>{' '}
+          <a href={linkedin} target="_blank">
+            Linkedin
+          </a>
+        </span>
+      )}
     </div>
   )
 }

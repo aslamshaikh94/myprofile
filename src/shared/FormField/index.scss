@@ -4,7 +4,7 @@
   align-items: flex-start;
   margin-bottom: 1rem;
   width: 100%;
-  label {
+  > label {
     margin-bottom: 5px;
     color: var(--gray);
   }

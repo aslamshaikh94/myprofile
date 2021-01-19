@@ -2,7 +2,7 @@ import Axios from 'axios'
 import { getAppStore, storeDispatcher } from '@store'
 import { setLodingStatusAction } from '@actions'
 // import { encryptRequest, decryptResponse } from './crypto'
-import { LOGIN_ROUTE } from '@constants/routers'
+import { LOGIN_ROUTE, PAGE_NOT_FOUND_ROUTE } from '@constants/routers'
 import history from '@history'
 
 import { showNotification } from '@shared/Notification'
@@ -54,6 +54,9 @@ const responseErrorInterceptor = (err) => {
       history.push(LOGIN_ROUTE)
     }
     setLodingStatusAction(false)
+  }
+  if (status === 404) {
+    history.push(PAGE_NOT_FOUND_ROUTE)
   }
 
   if (!!errorJSON && errorJSON.code === 'ECONNABORTED') {

@@ -59,7 +59,7 @@ const Auth = () => {
     }
   }, [username])
 
-  const getUserContactInfo = async (username) => {
+  const getUserFullDetails = async (username) => {
     if (username) {
       const { status, data } = await callGetUserFullGetails({
         username: `/${username}`,
@@ -88,7 +88,7 @@ const Auth = () => {
 
     if (status === 200) {
       dispatch(userLoginSuccessAction(data))
-      getUserContactInfo(data.username)
+      getUserFullDetails(data.username)
     }
   }
 

@@ -5,7 +5,13 @@ import Home from '@views/Home'
 import Dashboard from '@views/Dashboard'
 import Admin from '@views/Admin'
 import Auth from '@views/Auth'
-import { LOGIN_ROUTE, HOME_ROUTE, ADMIN_ROUTE } from '@constants/routers'
+import NotFound from '@views/NotFound'
+import {
+  LOGIN_ROUTE,
+  HOME_ROUTE,
+  ADMIN_ROUTE,
+  PAGE_NOT_FOUND_ROUTE,
+} from '@constants/routers'
 import history from '@history/'
 import { useStore } from '@store'
 import { setThemeMode } from '@utils'
@@ -33,8 +39,9 @@ const App = () => {
           <PrivateRoute path={ADMIN_ROUTE} component={Admin} />
           <Route path={LOGIN_ROUTE} component={Auth} />
           <Route exact path={HOME_ROUTE} component={Dashboard} />
+          <Route path={PAGE_NOT_FOUND_ROUTE} component={NotFound} />
           <Route path={HOME_ROUTE} component={Home}>
-            <Route path={'/:id'} component={Home}></Route>
+            <Route exact path={'/:id'} component={Home}></Route>
           </Route>
         </Switch>
       </Router>

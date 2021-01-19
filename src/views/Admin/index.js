@@ -22,8 +22,8 @@ const Admin = () => {
             </div>
             <div className="Col Col6 ColGap">
               <Employment />
-              <Education />
               <Projects />
+              <Education />
             </div>
           </div>
         </div>
