@@ -3,6 +3,7 @@ import { useStore } from '@store'
 import { callUploadUserProfilePhoto } from '@api/requestType'
 import { setUserContactInfoAction } from '@actions'
 import { showNotification } from '@shared/Notification'
+import { DEFAULT_PROFILE_URL } from '@constants'
 import './index.scss'
 
 const ProfilePhoto = (props) => {
@@ -50,7 +51,7 @@ const ProfilePhoto = (props) => {
 
   return (
     <div className={`ProfilePhoto ${onUpload && 'Upload'}`}>
-      <img src={imgUrl || `//joeschmoe.io/api/v1/${name}`} />
+      <img src={imgUrl || DEFAULT_PROFILE_URL} />
       {!onUpload && <h1 className="Name">{name}</h1>}
       {onUpload && (
         <input type="file" accept=".png, .jpg, .jpeg" onChange={handleChange} />

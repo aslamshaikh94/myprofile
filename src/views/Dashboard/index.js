@@ -3,11 +3,12 @@ import { useStore } from '@store'
 import { callGetUsersList } from '@api/requestType'
 import { setUsersListAction } from '@actions'
 import Header from '@shared/Header'
+import { DEFAULT_PROFILE_URL } from '@constants'
 import './index.scss'
 
 const Dashboard = () => {
   const {
-    state: { usersList },
+    state: { usersList = [] },
     dispatch,
   } = useStore()
   const getUsersList = async () => {
@@ -34,7 +35,7 @@ const Dashboard = () => {
                     <img
                       src={
                         (item.userPhoto && item.userPhoto.imgUrl) ||
-                        `//joeschmoe.io/api/v1/${item.name}`
+                        DEFAULT_PROFILE_URL
                       }
                     />
                     <div>
