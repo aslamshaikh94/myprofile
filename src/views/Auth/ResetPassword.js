@@ -37,7 +37,7 @@ const ResetPassword = () => {
           onChange={handleChange}
         />
         <InputField
-          lable="Password"
+          lable="New Password"
           type="password"
           name="password"
           value={password}
