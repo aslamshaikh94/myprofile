@@ -1,4 +1,6 @@
 export const HOME_ROUTE = '/'
 export const LOGIN_ROUTE = '/auth'
+export const RESET_PASSWORD_ROUTE = '/resetpassword'
+export const FORGOT_PASSWORD_ROUTE = '/forgotpassword'
 export const ADMIN_ROUTE = '/admin'
 export const PAGE_NOT_FOUND_ROUTE = '/notfound'

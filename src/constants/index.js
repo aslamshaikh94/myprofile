@@ -1,4 +1,7 @@
-export const formSwitch = { 'Sign in': 'signin', 'Sign up': 'signup' }
+export const formSwitch = {
+  'Sign in': 'signin',
+  'Sign up': 'signup',
+}
 export const MONTH_SHORT_NAME = [
   'Jan',
   'Feb',

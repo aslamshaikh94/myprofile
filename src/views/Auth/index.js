@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { InputField, SwitchButton } from '@shared/FormField'
 import {
   callUserSignup,
@@ -7,6 +8,7 @@ import {
   callGetUserFullGetails,
 } from '@api/requestType'
 import { useStore } from '@store/'
+import { FORGOT_PASSWORD_ROUTE } from '@constants/routers'
 import { userLoginSuccessAction, setUserFullDetailsAction } from '@actions'
 import { ADMIN_ROUTE } from '@constants/routers'
 import { formSwitch } from '@constants'
@@ -134,6 +136,7 @@ const Auth = () => {
           value={email}
           onChange={handleChange}
         />
+
         <InputField
           type="password"
           lable="Password"
@@ -141,6 +144,7 @@ const Auth = () => {
           value={password}
           onChange={handleChange}
         />
+        <Link to={FORGOT_PASSWORD_ROUTE}>Forgot Password</Link>
         <button className="Button" onClick={handleSubmit}>
           Sign {authform === 'signin' ? 'in' : 'up'}
         </button>

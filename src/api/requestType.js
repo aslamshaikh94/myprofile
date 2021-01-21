@@ -34,6 +34,23 @@ export const callGetUserCout = () => {
   return Axios.get('/users/usercout')
 }
 
+/**  Send password on email
+ * @param {Object} payload
+ * @param {Object} payload.email
+ */
+export const callSendForgotPassword = (payload) => {
+  return Axios.post('/users/forgotpassword', payload)
+}
+
+/**  Reset password using email and new password
+ * @param {Object} payload
+ * @param {Object} payload.email
+ * @param {Object} payload.password
+ */
+export const callResetPassword = (payload) => {
+  return Axios.post('/users/resetpassword', payload)
+}
+
 /**  Set user contact information
  * @param {Object} payload
  */
