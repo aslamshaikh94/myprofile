@@ -52,10 +52,10 @@ const ContactInfo = () => {
       <div className="Box">
         <h3 className="Title">Contact Information</h3>
         <div className="Row">
-          <div className="Col Col6">
+          <div className="Col Col12">
             <ProfilePhoto onUpload />
           </div>
-          <div className="Col Col6">
+          <div className="Col Col12">
             <SwitchButton
               lable="Personal Information*"
               name="personalInfo"
