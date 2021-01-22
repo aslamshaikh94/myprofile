@@ -11,6 +11,7 @@ const Dashboard = () => {
     state: { usersList = [] },
     dispatch,
   } = useStore()
+
   const getUsersList = async () => {
     const { status, data } = await callGetUsersList()
     if (status === 200) {
@@ -30,7 +31,7 @@ const Dashboard = () => {
           {usersList &&
             usersList.map((item, i) => (
               <div className="Col Col3" key={item.username}>
-                <a href={item.username} target="_blank" className="LinkNone">
+                <a href={item.username} className="LinkNone">
                   <div className="Box ProfileView">
                     <img
                       src={

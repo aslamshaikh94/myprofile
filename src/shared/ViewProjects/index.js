@@ -3,6 +3,8 @@ import React from 'react'
 const ViewProjects = (props) => {
   const { projects = [], onEventClick } = props
 
+  projects.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+
   return projects.map((item) => (
     <div key={item._id} className="BoxItem">
       <div className="SubTitle">

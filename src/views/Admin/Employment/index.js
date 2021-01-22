@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useStore } from '@store'
 import { setUserEmploymentAction } from '@actions/'
 import {
   callSetUserEmployment,
   callDeleteUserEmployment,
 } from '@api/requestType'
-import { InputField, TextArea } from '@shared/FormField'
+import { InputField, TextArea, Checkbox } from '@shared/FormField'
 import Experiences from '@shared/Experiences'
 
 const Employment = () => {
@@ -14,7 +14,7 @@ const Employment = () => {
     dispatch,
   } = useStore()
 
-  const [employment, setEmployment] = useState({})
+  const [employment, setEmployment] = useState({ workedTill: true })
 
   const {
     organization,
@@ -27,6 +27,12 @@ const Employment = () => {
   const handleChange = (e) => {
     const { name, value } = e.target
     setEmployment({ ...employment, [name]: value })
+  }
+
+  const handleChecked = (e) => {
+    const { name, value, checked } = e.target
+    const checkedVal = checked ? value : ''
+    setEmployment({ ...employment, [name]: checkedVal })
   }
 
   const handleAcction = async (id, event) => {
@@ -47,6 +53,18 @@ const Employment = () => {
   const payload = {
     employment,
   }
+
+  const [isPresent, setIsPresent] = useState()
+
+  useEffect(() => {
+    let date = []
+    employments.forEach((e) => {
+      date.push(e.workedTill)
+    })
+    setIsPresent(date.includes('present'))
+  }, [employments])
+
+  console.log(isPresent)
 
   const handleSubmit = async () => {
     const { status, data } = await callSetUserEmployment(payload)
@@ -94,12 +112,23 @@ const Employment = () => {
           </div>
           <div className="Col Col6">
             <InputField
+              lable="Present"
               type="month"
-              lable="Worked Till"
               name="workedTill"
               value={workedTill}
               onChange={handleChange}
+              disabled={workedTill === 'present'}
             />
+            {(!isPresent || !workedTill || workedTill === 'present') && (
+              <Checkbox
+                lable="Present"
+                type="checkbox"
+                name="workedTill"
+                value="present"
+                checked={workedTill === 'present'}
+                onChange={handleChecked}
+              />
+            )}
           </div>
           <div className="Col Col12">
             <TextArea

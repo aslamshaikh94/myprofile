@@ -12,6 +12,16 @@ export const InputField = (props) => {
     </div>
   )
 }
+export const Checkbox = (props) => {
+  const { lable, name = '', ...rest } = props
+
+  return (
+    <div className="FormGrop Checkbox">
+      <input id={name} name={name} {...rest} />
+      <label htmlFor={name}>{lable}</label>
+    </div>
+  )
+}
 
 export const TextArea = (props) => {
   const { lable, name = '', value = '', ...rest } = props

@@ -4,6 +4,8 @@ import { dateWithMonthName } from '@utils'
 const Experiences = (props) => {
   const { employments = [], onEventClick } = props
 
+  employments.sort((a, b) => new Date(b.workedFrom) - new Date(a.workedFrom))
+
   return employments.map((item) => (
     <div key={item._id} className="BoxItem">
       <div className="SubTitle">
@@ -30,7 +32,11 @@ const Experiences = (props) => {
       <div className="Calendar">
         <i className="far fa-calendar-alt"></i>{' '}
         {dateWithMonthName(item.workedFrom)} -{' '}
-        {dateWithMonthName(item.workedTill)}
+        {item.workedTill !== 'present' ? (
+          dateWithMonthName(item.workedTill)
+        ) : (
+          <span className="Present"> Present</span>
+        )}
       </div>
       <p className="Paragraph">{item.describe}</p>
     </div>

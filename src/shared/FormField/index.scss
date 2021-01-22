@@ -23,6 +23,18 @@
       }
     }
   }
+  &.Checkbox {
+    flex-direction: row;
+    align-items: center;
+    input {
+      width: auto;
+      margin: 0;
+      margin-right: 10px;
+    }
+    label {
+      margin: 0;
+    }
+  }
 }
 
 .SwitchBtn {

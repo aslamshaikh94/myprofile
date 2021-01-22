@@ -7,7 +7,8 @@ import {
   setUserFullDetailsAction,
 } from '@actions'
 import history from '@history'
-import { HOME_ROUTE, LOGIN_ROUTE } from '@constants/routers'
+import { HOME_ROUTE, LOGIN_ROUTE, ADMIN_ROUTE } from '@constants/routers'
+import { Link } from 'react-router-dom'
 import './index.scss'
 
 const Header = () => {
@@ -57,20 +58,25 @@ const Header = () => {
     history.push(LOGIN_ROUTE)
   }
 
+  const pathName = history.location.pathname.replace('/', '')
+
   return (
     <div className="Header">
       <div className="Green">Total Users: {totalUser}</div>
       <div className="RightGroup">
-        {history.location.pathname === '/admin' && (
-          <a
-            className="AuthIcon"
-            target="_blank"
-            href={`${window.location.origin}/${username}`}
-          >
-            <i className="fas fa-eye	"></i>
+        <Link className="AuthIcon" to={HOME_ROUTE}>
+          <i className="fas fa-desktop"></i> Dashboard
+        </Link>
+        {pathName === 'admin' && (
+          <a className="AuthIcon" href={username}>
+            <i className="fas fa-eye	"></i> View
           </a>
         )}
-
+        {userId && pathName !== 'admin' && (
+          <Link className="AuthIcon" to={ADMIN_ROUTE}>
+            <i className="fab fa-wpforms"></i> Admin
+          </Link>
+        )}
         {userId ? (
           <span className="AuthIcon" onClick={handleLogOut}>
             <i className="fas fa-sign-out-alt"></i> Sign out
