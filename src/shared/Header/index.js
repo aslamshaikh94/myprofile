@@ -59,22 +59,24 @@ const Header = () => {
   }
 
   const pathName = history.location.pathname.replace('/', '')
-
+  console.log(pathName)
   return (
     <div className="Header">
       <div className="Green">Total Users: {totalUser}</div>
       <div className="RightGroup">
-        <Link className="AuthIcon" to={HOME_ROUTE}>
-          <i className="fas fa-desktop"></i> Dashboard
-        </Link>
+        {pathName && (
+          <Link className="AuthIcon" to={HOME_ROUTE}>
+            <i className="fas fa-desktop"></i> Dashboard
+          </Link>
+        )}
         {pathName === 'admin' && (
-          <a className="AuthIcon" href={username}>
+          <Link className="AuthIcon" to={username}>
             <i className="fas fa-eye	"></i> View
-          </a>
+          </Link>
         )}
         {userId && pathName !== 'admin' && (
           <Link className="AuthIcon" to={ADMIN_ROUTE}>
-            <i className="fab fa-wpforms"></i> Admin
+            <i className="fas fa-edit"></i> Edit
           </Link>
         )}
         {userId ? (
