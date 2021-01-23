@@ -82,16 +82,18 @@ const ProfilePhoto = (props) => {
     <>
       <div className={`ProfilePhoto ${onUpload && 'Upload'}`}>
         <div className="imgWrapper">
-          <Cropper
-            image={selectImg}
-            crop={crop}
-            zoom={zoom}
-            rotation={rotation}
-            aspect={5 / 3}
-            onCropChange={setCrop}
-            onCropComplete={onCropComplete}
-            onZoomChange={setZoom}
-          />
+          {onUpload && (
+            <Cropper
+              image={selectImg}
+              crop={crop}
+              zoom={zoom}
+              rotation={rotation}
+              aspect={5 / 3}
+              onCropChange={setCrop}
+              onCropComplete={onCropComplete}
+              onZoomChange={setZoom}
+            />
+          )}
         </div>
 
         <img src={selectImg || DEFAULT_PROFILE_URL} />
