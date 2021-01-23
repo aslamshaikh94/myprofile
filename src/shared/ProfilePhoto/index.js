@@ -4,6 +4,7 @@ import { callUploadUserProfilePhoto } from '@api/requestType'
 import { setUserContactInfoAction } from '@actions'
 import { showNotification } from '@shared/Notification'
 import { DEFAULT_PROFILE_URL } from '@constants'
+import { InputField } from '@shared/FormField'
 import getCroppedImg from './cropImage'
 import Cropper from 'react-easy-crop'
 import './index.scss'
@@ -34,7 +35,7 @@ const ProfilePhoto = (props) => {
     })
   }
 
-  const [selectImg, setSelectImg] = useState('')
+  const [selectImg, setSelectImg] = useState(imgUrl)
 
   const saveImage = async (imgUrl) => {
     const { status, data } = await callUploadUserProfilePhoto({
@@ -58,7 +59,7 @@ const ProfilePhoto = (props) => {
     const imgUrl = await getFileBase64(file)
     if (!validImageTypes.includes(fileType)) {
       showNotification('error', 'Please upload file type JPG/JPEG/PNG')
-    } else if (fileSize >= 1) {
+    } else if (fileSize >= 5) {
       showNotification('error', 'Please upload file size less than 1MB')
     } else {
       setSelectImg(imgUrl)
@@ -77,36 +78,65 @@ const ProfilePhoto = (props) => {
     }
   }, [croppedAreaPixels, rotation])
 
-  console.log(selectImg)
-
   return (
     <>
       <div className={`ProfilePhoto ${onUpload && 'Upload'}`}>
-        <Cropper
-          image={selectImg}
-          crop={crop}
-          zoom={zoom}
-          aspect={5 / 3}
-          onCropChange={setCrop}
-          onCropComplete={onCropComplete}
-          onZoomChange={setZoom}
-        />
+        <div className="imgWrapper">
+          <Cropper
+            image={selectImg}
+            crop={crop}
+            zoom={zoom}
+            rotation={rotation}
+            aspect={5 / 3}
+            onCropChange={setCrop}
+            onCropComplete={onCropComplete}
+            onZoomChange={setZoom}
+          />
+        </div>
 
-        <img src={imgUrl || DEFAULT_PROFILE_URL} />
-
-        {!onUpload && <h1 className="Name">{name}</h1>}
+        <img src={selectImg || DEFAULT_PROFILE_URL} />
+        {!onUpload && (
+          <>
+            <h1 className="Name">{name}</h1>
+          </>
+        )}
       </div>
       {onUpload && (
-        <div className="ButtonGroup">
-          <input
-            type="file"
-            accept=".png, .jpg, .jpeg"
-            onChange={handleChange}
-          />
-          <button className="Button" onClick={showCroppedImage}>
-            Croppe Image
-          </button>
-        </div>
+        <>
+          <div className="ButtonGroup">
+            <input
+              type="file"
+              accept=".png, .jpg, .jpeg"
+              onChange={handleChange}
+            />
+            <button className="Button" onClick={showCroppedImage}>
+              Croppe Image
+            </button>
+          </div>
+          <div className="Row">
+            <div className="Col Col6">
+              <InputField
+                lable="Zoom"
+                name="zoom"
+                type="range"
+                value={zoom}
+                min={1}
+                onChange={(e) => setZoom(e.target.value)}
+              />
+            </div>
+            <div className="Col Col6">
+              <InputField
+                lable="Rotate"
+                name="rotation"
+                type="range"
+                value={rotation}
+                min={1}
+                max={360}
+                onChange={(e) => setRotation(e.target.value)}
+              />
+            </div>
+          </div>
+        </>
       )}
     </>
   )

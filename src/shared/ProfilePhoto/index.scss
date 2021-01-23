@@ -1,8 +1,12 @@
 .ProfilePhoto {
   position: relative;
+  .imgWrapper {
+    > img {
+      visibility: hidden;
+    }
+  }
   &.Upload {
     border: 1px solid var(--textcolor);
-    max-width: 400px;
     margin-bottom: 2rem;
   }
   img {

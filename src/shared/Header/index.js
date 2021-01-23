@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useStore, setStore } from '@store'
-import { callGetUserCout } from '@api/requestType'
+import { useStore } from '@store'
+import { callGetUserCout, callGetLoginUserFullGetails } from '@api/requestType'
 import {
   setThemeAction,
   userLoginSuccessAction,
   setUserFullDetailsAction,
 } from '@actions'
+
 import history from '@history'
 import { HOME_ROUTE, LOGIN_ROUTE, ADMIN_ROUTE } from '@constants/routers'
 import { Link } from 'react-router-dom'
@@ -58,8 +59,16 @@ const Header = () => {
     history.push(LOGIN_ROUTE)
   }
 
+  const getUserFullDetails = async () => {
+    const { status, data } = await callGetLoginUserFullGetails()
+    if (status === 200) {
+      dispatch(setUserFullDetailsAction(data))
+    }
+    history.push(ADMIN_ROUTE)
+  }
+
   const pathName = history.location.pathname.replace('/', '')
-  console.log(pathName)
+
   return (
     <div className="Header">
       <div className="Green">Total Users: {totalUser}</div>
@@ -75,9 +84,9 @@ const Header = () => {
           </Link>
         )}
         {userId && pathName !== 'admin' && (
-          <Link className="AuthIcon" to={ADMIN_ROUTE}>
+          <span className="AuthIcon" onClick={getUserFullDetails}>
             <i className="fas fa-edit"></i> Edit
-          </Link>
+          </span>
         )}
         {userId ? (
           <span className="AuthIcon" onClick={handleLogOut}>

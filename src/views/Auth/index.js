@@ -61,16 +61,12 @@ const Auth = () => {
     }
   }, [username])
 
-  const getUserFullDetails = async (username) => {
-    if (username) {
-      const { status, data } = await callGetLoginUserFullGetails({
-        username: `/${username}`,
-      })
-      if (status === 200) {
-        dispatch(setUserFullDetailsAction(data))
-      }
-      history.push(ADMIN_ROUTE)
+  const getUserFullDetails = async () => {
+    const { status, data } = await callGetLoginUserFullGetails()
+    if (status === 200) {
+      dispatch(setUserFullDetailsAction(data))
     }
+    history.push(ADMIN_ROUTE)
   }
 
   const handleSubmit = async () => {
@@ -90,7 +86,7 @@ const Auth = () => {
 
     if (status === 200) {
       dispatch(userLoginSuccessAction(data))
-      getUserFullDetails(data.username)
+      getUserFullDetails()
     }
   }
 
