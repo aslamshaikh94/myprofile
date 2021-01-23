@@ -5,7 +5,7 @@ import {
   callUserSignup,
   callUserSignin,
   callIsUsername,
-  callGetUserFullGetails,
+  callGetLoginUserFullGetails,
 } from '@api/requestType'
 import { useStore } from '@store/'
 import { FORGOT_PASSWORD_ROUTE } from '@constants/routers'
@@ -63,7 +63,7 @@ const Auth = () => {
 
   const getUserFullDetails = async (username) => {
     if (username) {
-      const { status, data } = await callGetUserFullGetails({
+      const { status, data } = await callGetLoginUserFullGetails({
         username: `/${username}`,
       })
       if (status === 200) {

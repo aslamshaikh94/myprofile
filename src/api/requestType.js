@@ -70,6 +70,14 @@ export const callGetUserFullGetails = (payload) => {
  * @param {Object} payload
  * @param {string} payload.username
  */
+export const callGetLoginUserFullGetails = () => {
+  return Axios.get(`/userdetails/profile`)
+}
+
+/**  Get Full detail of user using username
+ * @param {Object} payload
+ * @param {string} payload.username
+ */
 export const callGetUsersList = (payload) => {
   return Axios.post(`/userdetails/userslist`)
 }
