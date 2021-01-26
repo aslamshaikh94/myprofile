@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { dateWithMonthName } from '@utils'
 
 const Experiences = (props) => {
@@ -43,4 +43,4 @@ const Experiences = (props) => {
   ))
 }
 
-export default Experiences
+export default memo(Experiences)

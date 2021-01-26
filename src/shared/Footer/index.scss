@@ -1,0 +1,15 @@
+@import '@shared/_mixins';
+.Footer {
+  @include shadowSM;
+  @include themebg;
+  position: fixed;
+  bottom: 0;
+  padding: 1rem;
+  margin-top: 2rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--textcolor);
+}

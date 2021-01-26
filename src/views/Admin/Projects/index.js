@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import { useStore } from '@store'
 import { InputField, TextArea } from '@shared/FormField'
 import ViewProjects from '@shared/ViewProjects'
@@ -96,4 +96,4 @@ const Projects = () => {
   )
 }
 
-export default Projects
+export default memo(Projects)

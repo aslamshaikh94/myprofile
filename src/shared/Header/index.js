@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { useStore } from '@store'
 import { callGetUserCout, callGetLoginUserFullGetails } from '@api/requestType'
 import {
@@ -116,4 +116,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default memo(Header)

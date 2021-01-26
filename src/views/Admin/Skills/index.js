@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import { useStore } from '@store'
 import { InputField } from '@shared/FormField'
 import { callSetUserSkills } from '@api/requestType'
@@ -95,4 +95,4 @@ const Skills = () => {
   )
 }
 
-export default Skills
+export default memo(Skills)

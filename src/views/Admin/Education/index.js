@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import { useStore } from '@store'
 import { callSetUserEducation, callDeleteEducation } from '@api/requestType'
 import { setUserEducationAction } from '@actions'
@@ -99,4 +99,4 @@ const Education = () => {
   )
 }
 
-export default Education
+export default memo(Education)

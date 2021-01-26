@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import { callResetPassword } from '@api/requestType'
 import { LOGIN_ROUTE } from '@constants/routers'
 import { InputField } from '@shared/FormField'
@@ -52,4 +52,4 @@ const ResetPassword = () => {
   )
 }
 
-export default ResetPassword
+export default memo(ResetPassword)

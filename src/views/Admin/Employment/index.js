@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { useStore } from '@store'
 import { setUserEmploymentAction } from '@actions/'
 import {
@@ -149,4 +149,4 @@ const Employment = () => {
   )
 }
 
-export default Employment
+export default memo(Employment)

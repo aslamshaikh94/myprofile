@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, memo } from 'react'
 import './index.scss'
 import Header from '@shared/Header/'
 import Sidebar from './Sidebar'
@@ -45,4 +45,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default memo(Home)

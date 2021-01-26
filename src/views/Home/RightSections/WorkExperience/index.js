@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { useStore } from '@store'
 import Experiences from '@shared/Experiences'
 import './index.scss'
@@ -12,11 +12,11 @@ const WorkExperience = () => {
     <div className="WorkExperience">
       <div className="MainTitle">
         <i className="fa fa-suitcase"></i>
-        Work Experience
+        Employment
       </div>
       <Experiences employments={employments} />
     </div>
   )
 }
 
-export default WorkExperience
+export default memo(WorkExperience)

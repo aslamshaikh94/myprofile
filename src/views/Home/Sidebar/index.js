@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import ProfilePhoto from '@shared/ProfilePhoto'
 import ContactInfo from './ContactInfo'
 import Skills from './Skills'
@@ -17,4 +17,4 @@ const Sidebar = () => {
   )
 }
 
-export default Sidebar
+export default memo(Sidebar)

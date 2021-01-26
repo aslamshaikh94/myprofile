@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { useStore } from '@store'
 import Progress from '@shared/Progress'
 
@@ -27,4 +27,4 @@ const Languages = () => {
   )
 }
 
-export default Languages
+export default memo(Languages)

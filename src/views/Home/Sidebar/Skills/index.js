@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Progress from '@shared/Progress'
 import { useStore } from '@store'
 import './index.scss'
@@ -24,4 +24,4 @@ const Skills = () => {
     </div>
   )
 }
-export default Skills
+export default memo(Skills)

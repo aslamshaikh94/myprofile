@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import { useStore } from '@store'
 import { InputField } from '@shared/FormField'
 import { callSetUserLanguages } from '@api/requestType'
@@ -94,4 +94,4 @@ const Languages = () => {
   )
 }
 
-export default Languages
+export default memo(Languages)

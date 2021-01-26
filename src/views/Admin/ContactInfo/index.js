@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { useStore } from '@store'
 import { callSetContactInfo } from '@api/requestType'
 import { setUserContactInfoAction } from '@actions'
@@ -137,4 +137,4 @@ const ContactInfo = () => {
   )
 }
 
-export default ContactInfo
+export default memo(ContactInfo)

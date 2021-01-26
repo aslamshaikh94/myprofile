@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import WorkExperience from './WorkExperience'
 import Education from './Education'
 import Projects from './Projects'
@@ -14,4 +14,4 @@ const RightSections = () => {
   )
 }
 
-export default RightSections
+export default memo(RightSections)

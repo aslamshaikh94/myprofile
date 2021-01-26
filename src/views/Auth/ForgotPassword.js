@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import { callSendForgotPassword } from '@api/requestType'
 import { LOGIN_ROUTE } from '@constants/routers'
 import history from '@history'
@@ -47,4 +47,4 @@ const ForgotPassword = () => {
   )
 }
 
-export default ForgotPassword
+export default memo(ForgotPassword)

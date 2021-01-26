@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { memo, useEffect } from 'react'
 import { useStore } from '@store'
 import { callGetUsersList } from '@api/requestType'
 import { setUsersListAction } from '@actions'
 import Header from '@shared/Header'
+import Footer from '@shared/Footer'
 import { DEFAULT_PROFILE_URL } from '@constants'
 import './index.scss'
 
@@ -50,8 +51,9 @@ const Dashboard = () => {
             ))}
         </div>
       </div>
+      <Footer />
     </div>
   )
 }
 
-export default Dashboard
+export default memo(Dashboard)

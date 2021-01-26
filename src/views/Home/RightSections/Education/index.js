@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { useStore } from '@store'
 import Educations from '@shared/Educations'
 import './index.scss'
@@ -19,4 +19,4 @@ const Education = () => {
   )
 }
 
-export default Education
+export default memo(Education)

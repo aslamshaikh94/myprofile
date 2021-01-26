@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Header from '@shared/Header'
 import ContactInfo from './ContactInfo'
 import Skills from './Skills'
@@ -32,4 +32,4 @@ const Admin = () => {
   )
 }
 
-export default Admin
+export default memo(Admin)
